@@ -1,1377 +1,886 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>Bola Pelangi | Next-Gen Slot Dashboard 2026</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <style>
-        /* ========== PROTECTION CSS ========== */
-        body {
-            user-select: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            -webkit-touch-callout: none;
-        }
-        
-        /* Watermark visual jika ada yang screenshot */
-        body::after {
-            content: "© 2026 BolaPelangi - All Rights Reserved";
-            position: fixed;
-            bottom: 5px;
-            right: 5px;
-            font-size: 8px;
-            color: rgba(255,255,255,0.1);
-            pointer-events: none;
-            z-index: 9999;
-            font-family: monospace;
-        }
-        
-        /* ========== ORIGINAL CSS ========== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Aetheria | Next-Gen Gaming Platform</title>
+  <!-- Google Fonts: Modern Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (Free Icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        :root {
-            --bg-primary: #010101;
-            --bg-elevated: #0a0a0f;
-            --bg-surface: #111115;
-            --bg-card: #14141c;
-            --border-subtle: rgba(255, 255, 255, 0.06);
-            --border-medium: rgba(255, 255, 255, 0.1);
-            --gold: #F5C542;
-            --gold-glow: #F5C542;
-            --orange: #FF6B3D;
-            --cyan: #00D4FF;
-            --emerald: #00E599;
-            --crimson: #FF4D4D;
-            --text-primary: #FFFFFF;
-            --text-secondary: #A1A1B0;
-            --text-muted: #5E5E73;
-            --radius-2xl: 32px;
-            --radius-xl: 24px;
-            --radius-lg: 18px;
-            --radius-md: 14px;
-            --transition-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
+    body {
+      font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+      background: #05070f;
+      color: #eef5ff;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
 
-        /* Light Mode */
-        body.light-mode {
-            --bg-primary: #f5f5f7;
-            --bg-elevated: #ffffff;
-            --bg-surface: #f0f0f3;
-            --bg-card: #ffffff;
-            --border-subtle: rgba(0, 0, 0, 0.06);
-            --border-medium: rgba(0, 0, 0, 0.1);
-            --text-primary: #1a1a2e;
-            --text-secondary: #4a4a5e;
-            --text-muted: #8a8a9e;
-        }
-        
-        body.light-mode::after {
-            color: rgba(0,0,0,0.08);
-        }
+    /* Animated Gradient Background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at 20% 30%, rgba(88, 28, 135, 0.25), transparent 50%),
+                  radial-gradient(ellipse at 80% 70%, rgba(245, 176, 66, 0.15), transparent 50%),
+                  radial-gradient(ellipse at 40% 80%, rgba(0, 180, 216, 0.08), transparent 60%);
+      pointer-events: none;
+      z-index: -2;
+    }
 
-        body {
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-            position: relative;
-            transition: background 0.3s, color 0.3s;
-        }
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(45deg, rgba(255,255,255,0.01) 0px, rgba(255,255,255,0.01) 2px, transparent 2px, transparent 8px);
+      pointer-events: none;
+      z-index: -1;
+    }
 
-        /* Login Overlay */
-        .login-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.85);
-            backdrop-filter: blur(20px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            transition: opacity 0.3s;
-        }
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0a0c16;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg, #F5B042, #C77DFF);
+      border-radius: 10px;
+    }
 
-        .login-card {
-            background: rgba(20,20,30,0.8);
-            border: 1px solid rgba(245,197,66,0.25);
-            border-radius: 28px;
-            padding: 40px 30px;
-            width: 340px;
-            text-align: center;
-            backdrop-filter: blur(20px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-            animation: fadeIn 0.4s ease;
-        }
+    /* Smooth Reveal Animations */
+    @keyframes fadeSlideUp {
+      0% { opacity: 0; transform: translateY(40px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
 
-        body.light-mode .login-card {
-            background: rgba(255,255,255,0.95);
-            color: #1a1a2e;
-        }
+    @keyframes fadeScale {
+      0% { opacity: 0; transform: scale(0.96); }
+      100% { opacity: 1; transform: scale(1); }
+    }
 
-        .login-header h2 {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            margin-top: 12px;
-            font-size: 1.5rem;
-            background: linear-gradient(135deg, #fff, #F5C542);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
+    @keyframes borderGlow {
+      0%, 100% { border-color: rgba(245, 176, 66, 0.2); box-shadow: 0 0 0 0 rgba(245, 176, 66, 0); }
+      50% { border-color: rgba(245, 176, 66, 0.6); box-shadow: 0 0 20px 0 rgba(245, 176, 66, 0.2); }
+    }
 
-        .login-header p {
-            font-size: 0.75rem;
-            color: #aaa;
-            margin-bottom: 20px;
-        }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
 
-        .login-input {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 60px;
-            padding: 10px 16px;
-            margin-bottom: 14px;
-        }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-        body.light-mode .login-input {
-            background: rgba(0,0,0,0.05);
-            border: 1px solid rgba(0,0,0,0.1);
-        }
+    .fade-up {
+      animation: fadeSlideUp 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+      opacity: 0;
+    }
 
-        .login-input i {
-            color: #F5C542;
-            font-size: 0.8rem;
-        }
+    .fade-scale {
+      animation: fadeScale 0.5s ease forwards;
+      opacity: 0;
+    }
 
-        .login-input input {
-            background: transparent;
-            border: none;
-            outline: none;
-            color: white;
-            width: 100%;
-            font-size: 0.85rem;
-        }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.35s; }
+    .delay-4 { animation-delay: 0.5s; }
+    .delay-5 { animation-delay: 0.65s; }
 
-        body.light-mode .login-input input {
-            color: #1a1a2e;
-        }
+    /* Glassmorphism Premium */
+    .glass-premium {
+      background: rgba(12, 16, 28, 0.6);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 32px;
+    }
 
-        .login-btn {
-            width: 100%;
-            margin-top: 10px;
-            padding: 12px;
-            border-radius: 60px;
-            border: none;
-            font-weight: 600;
-            background: linear-gradient(135deg, #F5C542, #FF6B3D);
-            color: #000;
-            cursor: pointer;
-            transition: 0.25s;
-        }
+    /* Container */
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
 
-        .login-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(245,197,66,0.3);
-        }
+    /* Header Sticky Glass Premium */
+    .sticky-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(5, 7, 15, 0.7);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(245, 176, 66, 0.2);
+      transition: all 0.3s ease;
+    }
 
-        .login-error {
-            color: #FF8A8A;
-            font-size: 0.78rem;
-            margin-top: 10px;
-            text-align: center;
-        }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 14px 0;
+    }
 
-        .register-link {
-            margin-top: 16px;
-            font-size: 0.7rem;
-            color: var(--text-secondary);
-            cursor: pointer;
-        }
+    .logo-modern {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, #F5B042, #B86F2C, #9D4EDD);
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 20px rgba(245,176,66,0.5);
+      animation: float 4s ease-in-out infinite;
+    }
+    .logo-icon i {
+      font-size: 28px;
+      color: white;
+      filter: drop-shadow(0 0 6px rgba(0,0,0,0.3));
+    }
+    .logo-text h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #FFFFFF, #F5B042, #C77DFF);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+      animation: gradientShift 6s ease infinite;
+    }
+    .logo-text span {
+      font-size: 0.7rem;
+      color: #9ca3af;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
 
-        .register-link span {
-            color: var(--gold);
-            text-decoration: underline;
-        }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      align-items: center;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #e2e8f0;
+      font-weight: 500;
+      transition: 0.3s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #F5B042, #C77DFF);
+      transition: width 0.3s ease;
+    }
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    .nav-links a:hover {
+      color: #F5B042;
+    }
 
-        /* Background Orbs & Grain */
-        .bg-orb {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(140px);
-            pointer-events: none;
-            z-index: 0;
-            transition: opacity 0.3s;
-        }
-        .orb-1 { width: 70vw; height: 70vw; background: radial-gradient(circle, rgba(245,197,66,0.2), transparent); top: -30vh; left: -20vw; }
-        .orb-2 { width: 60vw; height: 60vw; background: radial-gradient(circle, rgba(0,212,255,0.1), transparent); bottom: -20vh; right: -15vw; }
-        .orb-3 { width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(255,107,61,0.12), transparent); top: 50%; left: 40%; }
-        
-        body.light-mode .orb-1 { opacity: 0.4; }
-        body.light-mode .orb-2 { opacity: 0.3; }
-        body.light-mode .orb-3 { opacity: 0.3; }
-        
-        .grain {
-            position: fixed;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E");
-            pointer-events: none;
-            z-index: 1;
-        }
+    /* Hero Section Cinematic */
+    .hero {
+      padding: 100px 0 70px;
+      position: relative;
+    }
+    .hero-content {
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .badge-premium {
+      display: inline-block;
+      background: rgba(245, 176, 66, 0.12);
+      backdrop-filter: blur(8px);
+      padding: 6px 18px;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #F5B042;
+      border: 1px solid rgba(245, 176, 66, 0.3);
+      margin-bottom: 24px;
+      letter-spacing: 1px;
+    }
+    .glow-title {
+      font-size: clamp(2.8rem, 8vw, 5.5rem);
+      font-weight: 800;
+      background: linear-gradient(135deg, #FFFFFF, #F5B042, #C77DFF, #F5B042);
+      background-size: 300% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 24px;
+      line-height: 1.2;
+      animation: gradientShift 8s ease infinite;
+    }
+    .hero-sub {
+      font-size: 1.2rem;
+      color: #b9c7d9;
+      margin-bottom: 40px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-glow {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      background: linear-gradient(95deg, #F5B042, #C77DFF);
+      padding: 18px 44px;
+      border-radius: 60px;
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: #0A0C16;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(245,176,66,0.4);
+      border: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .cta-glow::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.6s ease;
+      z-index: -1;
+    }
+    .cta-glow:hover::before {
+      left: 100%;
+    }
+    .cta-glow:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 35px rgba(245,176,66,0.7), 0 15px 30px rgba(0,0,0,0.3);
+    }
 
-        .app-container {
-            max-width: 1600px;
-            margin: 0 auto;
-            padding: 28px 32px 64px;
-            position: relative;
-            z-index: 3;
-        }
+    /* Live Counter Premium */
+    .live-stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin: 60px 0 20px;
+      flex-wrap: wrap;
+    }
+    .stat-badge {
+      background: rgba(10, 12, 22, 0.6);
+      backdrop-filter: blur(12px);
+      padding: 12px 28px;
+      border-radius: 80px;
+      border: 1px solid rgba(245, 176, 66, 0.25);
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    .stat-badge:hover {
+      border-color: #F5B042;
+      transform: translateY(-3px);
+    }
+    .stat-badge i {
+      color: #F5B042;
+      margin-right: 10px;
+      font-size: 1.1rem;
+    }
+    .counter-number {
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: #F5B042;
+    }
 
-        @media (max-width: 768px) {
-            .app-container { padding: 20px 20px 48px; }
-        }
+    /* Trust Cards Grid Modern */
+    .trust-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 28px;
+      margin: 60px 0;
+    }
+    .trust-card {
+      background: rgba(15, 19, 32, 0.5);
+      backdrop-filter: blur(12px);
+      border-radius: 28px;
+      padding: 22px 32px;
+      min-width: 170px;
+      text-align: center;
+      border: 1px solid rgba(245, 176, 66, 0.2);
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+    .trust-card:hover {
+      transform: translateY(-8px);
+      border-color: #F5B042;
+      background: rgba(20, 24, 42, 0.7);
+      box-shadow: 0 20px 35px -12px rgba(245,176,66,0.2);
+    }
+    .trust-card i {
+      font-size: 2.2rem;
+      background: linear-gradient(135deg, #F5B042, #C77DFF);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .trust-card h3 {
+      font-size: 2rem;
+      font-weight: 800;
+    }
+    .trust-card p {
+      color: #9aa9bf;
+      font-weight: 500;
+      font-size: 0.85rem;
+    }
 
-        /* Sticky Nav */
-        .sticky-nav {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(1,1,1,0.75);
-            backdrop-filter: blur(24px);
-            border-bottom: 1px solid var(--border-subtle);
-            margin-bottom: 36px;
-            border-radius: 0 0 32px 32px;
-            padding: 16px 24px;
-            transition: background 0.3s;
-        }
+    /* Game Cards - Ultra Modern */
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 50px 0 28px 0;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .section-title i {
+      color: #F5B042;
+      font-size: 2rem;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 32px;
+      margin-bottom: 70px;
+    }
+    .game-card {
+      background: rgba(12, 16, 28, 0.55);
+      backdrop-filter: blur(14px);
+      border-radius: 36px;
+      padding: 28px 24px;
+      border: 1px solid rgba(245, 176, 66, 0.15);
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .game-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at top right, rgba(245,176,66,0.1), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .game-card:hover::before {
+      opacity: 1;
+    }
+    .game-card:hover {
+      transform: translateY(-10px);
+      border-color: #F5B042;
+      box-shadow: 0 30px 45px -20px rgba(245,176,66,0.4);
+    }
+    .card-icon {
+      font-size: 3rem;
+      background: linear-gradient(145deg, #F5B042, #B86F2C);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 20px;
+    }
+    .game-card h3 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .game-card p {
+      color: #a6b3cc;
+      font-size: 0.9rem;
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+    .card-stats {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #F5B042;
+      padding-top: 12px;
+      border-top: 1px solid rgba(245,176,66,0.15);
+    }
 
-        body.light-mode .sticky-nav {
-            background: rgba(255,255,255,0.85);
-        }
+    /* Ripple Effect */
+    .ripple {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(245,176,66,0.5) 0%, rgba(245,176,66,0) 70%);
+      transform: scale(0);
+      animation: rippleAnim 0.6s linear;
+      pointer-events: none;
+      z-index: 10;
+    }
+    @keyframes rippleAnim {
+      to {
+        transform: scale(8);
+        opacity: 0;
+      }
+    }
 
-        .nav-flex {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
+    /* Live Activity Feed Premium */
+    .activity-feed {
+      background: rgba(8, 12, 22, 0.55);
+      backdrop-filter: blur(16px);
+      border-radius: 36px;
+      padding: 32px;
+      margin: 50px 0;
+      border: 1px solid rgba(245,176,66,0.2);
+    }
+    .feed-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .live-dot {
+      width: 10px;
+      height: 10px;
+      background: #F5B042;
+      border-radius: 50%;
+      box-shadow: 0 0 12px #F5B042;
+      animation: pulseGlow 1.5s infinite;
+    }
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(245,176,66,0.6); }
+      50% { opacity: 0.6; box-shadow: 0 0 0 6px rgba(245,176,66,0); }
+    }
+    .feed-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .feed-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(245,176,66,0.1);
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+    .feed-item:hover {
+      background: rgba(245,176,66,0.05);
+      padding-left: 12px;
+      border-radius: 20px;
+    }
+    .feed-item i {
+      width: 36px;
+      font-size: 1.1rem;
+      color: #F5B042;
+    }
+    .highlight {
+      color: #F5B042;
+      font-weight: 700;
+    }
 
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
+    /* Promo Section Premium */
+    .promo-modern {
+      display: flex;
+      flex-wrap: wrap;
+      background: linear-gradient(125deg, rgba(20, 28, 48, 0.7), rgba(5, 7, 15, 0.8));
+      border-radius: 48px;
+      margin: 60px 0;
+      overflow: hidden;
+      border: 1px solid rgba(245,176,66,0.3);
+      backdrop-filter: blur(10px);
+      transition: all 0.4s;
+    }
+    .promo-modern:hover {
+      border-color: rgba(245,176,66,0.6);
+      box-shadow: 0 20px 40px -15px rgba(0,0,0,0.5);
+    }
+    .promo-content {
+      flex: 2;
+      padding: 48px 40px;
+    }
+    .promo-badge {
+      display: inline-block;
+      background: linear-gradient(95deg, rgba(245,176,66,0.15), rgba(199,125,255,0.1));
+      border-radius: 60px;
+      padding: 6px 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #F5B042;
+      margin-bottom: 20px;
+      border: 1px solid rgba(245,176,66,0.3);
+    }
+    .promo-content h2 {
+      font-size: 2rem;
+      margin-bottom: 18px;
+      line-height: 1.3;
+    }
+    .promo-cta {
+      margin-top: 32px;
+      display: inline-flex;
+      gap: 14px;
+      background: rgba(245,176,66,0.1);
+      border-radius: 60px;
+      padding: 14px 32px;
+      font-weight: 700;
+      transition: 0.3s;
+      text-decoration: none;
+      color: #F5B042;
+      border: 1px solid #F5B042;
+      align-items: center;
+    }
+    .promo-cta:hover {
+      background: #F5B042;
+      color: #0a0c16;
+      box-shadow: 0 0 25px #F5B042;
+      transform: translateX(5px);
+    }
+    .promo-stats {
+      flex: 1;
+      background: rgba(0,0,0,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 16px;
+      border-left: 1px solid rgba(245,176,66,0.2);
+    }
 
-        .logo-icon {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, #F5C542, #FF6B3D);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.6rem;
-            color: #010101;
-            box-shadow: 0 8px 20px rgba(245,197,66,0.25);
-        }
+    /* Footer Minimalis Elegan */
+    .footer {
+      margin-top: 80px;
+      padding: 50px 0 35px;
+      border-top: 1px solid rgba(245,176,66,0.15);
+      text-align: center;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 42px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+    .footer-links a {
+      color: #9aa9bf;
+      text-decoration: none;
+      transition: 0.3s;
+      font-weight: 500;
+    }
+    .footer-links a:hover {
+      color: #F5B042;
+    }
 
-        .logo-text h1 {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 1.7rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            background: linear-gradient(135deg, #FFFFFF, #F5C542);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .stats-pill {
-            display: flex;
-            gap: 16px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .pill-modern {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid var(--border-subtle);
-            border-radius: 60px;
-            padding: 8px 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            backdrop-filter: blur(4px);
-        }
-
-        .theme-toggle {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid var(--border-subtle);
-            border-radius: 60px;
-            padding: 8px 16px;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .theme-toggle:hover {
-            border-color: var(--gold);
-        }
-
-        .logout-btn {
-            background: rgba(255,77,77,0.15);
-            border: 1px solid rgba(255,77,77,0.3);
-            border-radius: 60px;
-            padding: 8px 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: #FF8A8A;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .logout-btn:hover {
-            background: rgba(255,77,77,0.25);
-            border-color: rgba(255,77,77,0.5);
-        }
-
-        /* Dashboard Layout */
-        .dashboard-layout {
-            display: grid;
-            grid-template-columns: 1fr 360px;
-            gap: 32px;
-        }
-        @media (max-width: 1024px) {
-            .dashboard-layout { grid-template-columns: 1fr; }
-        }
-
-        /* Filter Section */
-        .filter-section {
-            margin-bottom: 28px;
-        }
-        .search-sort-bar {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-        .search-modern {
-            flex: 2;
-            background: rgba(20,20,28,0.7);
-            border: 1px solid var(--border-subtle);
-            border-radius: 60px;
-            display: flex;
-            align-items: center;
-            padding: 0 20px;
-            gap: 12px;
-            backdrop-filter: blur(8px);
-        }
-        body.light-mode .search-modern {
-            background: rgba(0,0,0,0.05);
-        }
-        .search-modern i { color: var(--gold); font-size: 0.9rem; }
-        .search-modern input {
-            background: transparent;
-            border: none;
-            padding: 14px 0;
-            width: 100%;
-            color: var(--text-primary);
-            font-size: 0.9rem;
-            outline: none;
-        }
-        .sort-wrapper {
-            position: relative;
-            width: 180px;
-        }
-        .sort-selected {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 50px;
-            padding: 10px 16px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            color: var(--text-primary);
-            font-size: 0.8rem;
-            backdrop-filter: blur(10px);
-            transition: 0.2s;
-        }
-        body.light-mode .sort-selected {
-            background: rgba(0,0,0,0.05);
-        }
-        .sort-selected:hover { border-color: #F5C542; }
-        .sort-dropdown {
-            position: absolute;
-            top: 110%;
-            left: 0;
-            width: 100%;
-            background: rgba(20,20,30,0.9);
-            border: 1px solid rgba(245,197,66,0.2);
-            border-radius: 16px;
-            overflow: hidden;
-            display: none;
-            backdrop-filter: blur(20px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            z-index: 100;
-        }
-        body.light-mode .sort-dropdown {
-            background: rgba(255,255,255,0.95);
-        }
-        .sort-dropdown div {
-            padding: 10px 14px;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: 0.2s;
-            color: var(--text-primary);
-        }
-        .sort-dropdown div:hover {
-            background: linear-gradient(135deg, #F5C542, #FF6B3D);
-            color: #000;
-        }
-        .reset-btn {
-            background: rgba(255,77,77,0.1);
-            border: 1px solid rgba(255,77,77,0.3);
-            border-radius: 60px;
-            padding: 0 20px;
-            color: #FF8A8A;
-            font-weight: 500;
-            transition: 0.2s;
-            cursor: pointer;
-        }
-        .provider-chips-scroll {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 24px;
-        }
-        .chip-modern {
-            background: rgba(20,20,28,0.6);
-            border: 1px solid var(--border-subtle);
-            border-radius: 60px;
-            padding: 8px 20px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        body.light-mode .chip-modern {
-            background: rgba(0,0,0,0.05);
-        }
-        .chip-modern.active {
-            background: rgba(245,197,66,0.12);
-            border-color: var(--gold);
-            color: var(--gold);
-        }
-        .game-stats-info {
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-            margin-bottom: 20px;
-            letter-spacing: 0.3px;
-        }
-
-        /* Game Grid */
-        .game-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-            gap: 22px;
-        }
-        @media (max-width: 640px) {
-            .game-grid { grid-template-columns: 1fr; }
-        }
-
-        .game-card {
-            background: rgba(17,17,21,0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-xl);
-            padding: 20px;
-            transition: all 0.35s var(--transition-smooth);
-            cursor: pointer;
-            position: relative;
-            animation: cardFadeIn 0.4s ease;
-        }
-        body.light-mode .game-card {
-            background: rgba(255,255,255,0.7);
-        }
-        .game-card:hover {
-            transform: translateY(-6px) scale(1.01);
-            border-color: rgba(245,197,66,0.5);
-            box-shadow: 0 25px 40px -15px rgba(0,0,0,0.6), 0 0 0 1px rgba(245,197,66,0.2);
-            background: rgba(25,25,35,0.85);
-        }
-        body.light-mode .game-card:hover {
-            background: rgba(255,255,255,0.95);
-        }
-        @keyframes cardFadeIn {
-            from { opacity: 0; transform: translateY(12px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .card-header-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 16px;
-        }
-        .game-icon-large {
-            width: 56px;
-            height: 56px;
-            background: linear-gradient(145deg, rgba(245,197,66,0.15), rgba(255,107,61,0.05));
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-        }
-        .trend-badge-modern {
-            background: linear-gradient(135deg, #FF6B3D, #FF3D6B);
-            padding: 5px 12px;
-            border-radius: 40px;
-            font-size: 0.6rem;
-            font-weight: 800;
-            letter-spacing: 0.5px;
-        }
-        .game-title-card {
-            font-weight: 700;
-            font-size: 1.05rem;
-            margin: 12px 0 4px;
-        }
-        .provider-sub {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            margin-bottom: 16px;
-        }
-        .rtp-progress-area {
-            margin: 12px 0;
-        }
-        .rtp-flex {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.7rem;
-            margin-bottom: 6px;
-        }
-        .progress-bar-bg {
-            height: 5px;
-            background: rgba(255,255,255,0.08);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        body.light-mode .progress-bar-bg {
-            background: rgba(0,0,0,0.1);
-        }
-        .progress-fill {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, var(--gold), var(--orange));
-            border-radius: 10px;
-            transition: width 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-        }
-        .rtp-animate {
-            animation: rtpPulse 0.5s ease;
-        }
-        @keyframes rtpPulse {
-            0% { opacity: 0.5; }
-            100% { opacity: 1; }
-        }
-        .jackpot-light {
-            font-size: 0.75rem;
-            color: var(--cyan);
-            margin: 10px 0;
-        }
-        .pola-box {
-            background: rgba(0,212,255,0.07);
-            border: 1px solid rgba(0,212,255,0.2);
-            border-radius: 10px;
-            padding: 8px 12px;
-            font-size: 0.68rem;
-            color: #7ee8fa;
-            margin: 8px 0 12px;
-            display: flex;
-            align-items: center;
-            gap: 7px;
-        }
-        .pola-box i { color: #00D4FF; font-size: 0.7rem; flex-shrink: 0; }
-        .pola-label { color: var(--text-muted); margin-right: 2px; }
-        .status-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.65rem;
-            font-weight: 700;
-            padding: 4px 12px;
-            border-radius: 40px;
-            width: fit-content;
-        }
-        .badge-gacor { background: rgba(0,229,101,0.12); color: #00E599; border: 1px solid rgba(0,229,101,0.25); }
-        .badge-hot { background: rgba(255,77,77,0.12); color: #FF8A8A; border: 1px solid rgba(255,77,77,0.25); }
-        .badge-live { background: rgba(0,212,255,0.12); color: #00D4FF; border: 1px solid rgba(0,212,255,0.25); }
-        .badge-new { background: rgba(139,92,246,0.12); color: #B794F4; border: 1px solid rgba(139,92,246,0.25); }
-        .card-footer-actions {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 18px;
-        }
-        .demo-button {
-            background: transparent;
-            border: 1px solid var(--border-medium);
-            border-radius: 40px;
-            padding: 7px 18px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            color: var(--text-secondary);
-            transition: 0.2s;
-            cursor: pointer;
-        }
-        .demo-button:hover {
-            background: rgba(245,197,66,0.1);
-            color: var(--gold);
-            border-color: rgba(245,197,66,0.4);
-        }
-        .favorite-icon {
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-        .favorite-icon.active {
-            color: var(--gold);
-            filter: drop-shadow(0 0 6px rgba(245,197,66,0.5));
-        }
-
-        /* Sidebar */
-        .sidebar-modern {
-            background: rgba(10,10,15,0.6);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-2xl);
-            padding: 24px;
-            position: sticky;
-            top: 100px;
-            height: fit-content;
-        }
-        body.light-mode .sidebar-modern {
-            background: rgba(255,255,255,0.8);
-        }
-        .feed-header {
-            font-weight: 600;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border-left: 3px solid var(--gold);
-            padding-left: 14px;
-        }
-        .live-feed-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            max-height: 480px;
-            overflow-y: auto;
-        }
-        .feed-entry {
-            background: rgba(255,255,255,0.02);
-            border-radius: var(--radius-md);
-            padding: 14px;
-            border-left: 2px solid var(--gold);
-            transition: 0.1s;
-        }
-        .fav-count-footer {
-            margin-top: 24px;
-            padding-top: 16px;
-            border-top: 1px solid var(--border-subtle);
-            font-size: 0.8rem;
-        }
-
-        /* Modal */
-        .modal-premium {
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.8);
-            backdrop-filter: blur(20px);
-            z-index: 200;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            visibility: hidden;
-            opacity: 0;
-            transition: 0.2s;
-        }
-        .modal-premium.active {
-            visibility: visible;
-            opacity: 1;
-        }
-        .modal-card {
-            background: var(--bg-elevated);
-            border: 1px solid rgba(245,197,66,0.3);
-            border-radius: 48px;
-            max-width: 440px;
-            width: 90%;
-            padding: 36px 32px;
-            text-align: center;
-            transform: scale(0.96);
-            transition: transform 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.2);
-        }
-        .modal-premium.active .modal-card { transform: scale(1); }
-        .modal-game-name { font-size: 1.8rem; font-weight: 800; margin: 12px 0; }
-        .btn-modal-play {
-            background: linear-gradient(135deg, var(--gold), var(--orange));
-            border: none;
-            border-radius: 60px;
-            padding: 14px 28px;
-            font-weight: 700;
-            color: #010101;
-            margin-top: 24px;
-            cursor: pointer;
-            width: 100%;
-        }
-
-        /* Toast Notification */
-        .toast-notification {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #1a1a2e;
-            border-left: 4px solid var(--gold);
-            padding: 12px 20px;
-            border-radius: 12px;
-            z-index: 9999;
-            backdrop-filter: blur(12px);
-            font-size: 0.85rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            animation: slideInRight 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        body.light-mode .toast-notification {
-            background: #ffffff;
-            color: #1a1a2e;
-        }
-
-        .toast-notification.success {
-            border-left-color: #00E599;
-        }
-
-        .toast-notification.error {
-            border-left-color: #FF4D4D;
-        }
-
-        @keyframes slideInRight {
-            from {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        .loading-trigger-area {
-            text-align: center;
-            padding: 28px;
-            color: var(--text-secondary);
-        }
-
-        .rtp-update-badge {
-            animation: blink 0.5s ease;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-        
-        /* Anti-copy protection indicator */
-        .protected-badge {
-            position: fixed;
-            bottom: 5px;
-            left: 5px;
-            font-size: 7px;
-            color: rgba(255,255,255,0.08);
-            pointer-events: none;
-            z-index: 9999;
-            font-family: monospace;
-        }
-    </style>
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 20px;
+      }
+      .header-inner {
+        flex-direction: column;
+        align-items: center;
+      }
+      .nav-links {
+        gap: 24px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .hero {
+        padding: 60px 0 40px;
+      }
+      .glow-title {
+        font-size: 2.2rem;
+      }
+      .hero-sub {
+        font-size: 1rem;
+      }
+      .live-stats {
+        gap: 15px;
+      }
+      .stat-badge {
+        padding: 8px 18px;
+        font-size: 0.8rem;
+      }
+      .trust-grid {
+        gap: 16px;
+      }
+      .trust-card {
+        padding: 16px 20px;
+        min-width: 140px;
+      }
+      .promo-modern {
+        flex-direction: column;
+      }
+      .promo-stats {
+        border-left: none;
+        border-top: 1px solid rgba(245,176,66,0.2);
+        padding: 28px;
+      }
+      .promo-content {
+        padding: 32px 24px;
+      }
+      .promo-content h2 {
+        font-size: 1.5rem;
+      }
+      .section-title {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
 </head>
 <body>
-<div class="bg-orb orb-1"></div><div class="bg-orb orb-2"></div><div class="bg-orb orb-3"></div><div class="grain"></div>
 
-<div class="app-container">
-    <div class="sticky-nav">
-        <div class="nav-flex">
-            <div class="logo-area">
-                <div class="logo-icon"><i class="fas fa-dragon"></i></div>
-                <div class="logo-text">
-                    <h1>BolaPelangi</h1>
-                    <div style="font-size:0.65rem;">crypto-grade dashboard</div>
-                </div>
-            </div>
-            <div class="stats-pill">
-                <div class="pill-modern">
-                    <i class="fas fa-chart-line"></i> RTP <span id="avgRtpDisplay">97.6</span>%
-                </div>
-                <div class="pill-modern">
-                    <i class="fas fa-users"></i> <span id="activeUsers">3.8k</span> aktif
-                </div>
-                <div class="theme-toggle" id="themeToggle">
-                    <i class="fas fa-moon"></i> <span id="themeText">Mode</span>
-                </div>
-                <button id="logoutBtn" class="logout-btn" style="display: none;"><i class="fas fa-sign-out-alt"></i> Logout</button>
-            </div>
-        </div>
+<div class="sticky-header">
+  <div class="container header-inner">
+    <div class="logo-modern">
+      <div class="logo-icon">
+        <i class="fas fa-crown"></i>
+      </div>
+      <div class="logo-text">
+        <h1>AETHERIA</h1>
+        <span>next-gen gaming hub</span>
+      </div>
     </div>
-
-    <div class="dashboard-layout">
-        <div>
-            <div class="filter-section">
-                <div class="search-sort-bar">
-                    <div class="search-modern"><i class="fas fa-search"></i><input type="text" id="globalSearch" placeholder="Cari game favorit..."></div>
-                    <div class="sort-wrapper">
-                        <div class="sort-selected" onclick="toggleSort()">
-                            <span id="sortLabel">Sort: Default</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="sort-dropdown" id="sortDropdown">
-                            <div onclick="setSort('default')">Default</div>
-                            <div onclick="setSort('rtp')">RTP Tertinggi</div>
-                            <div onclick="setSort('trending')">Populer</div>
-                            <div onclick="setSort('newest')">Terbaru</div>
-                        </div>
-                    </div>
-                    <button id="resetAllFilters" class="reset-btn"><i class="fas fa-arrow-rotate-left"></i> Reset</button>
-                </div>
-                <div class="provider-chips-scroll" id="providerChipsContainer"></div>
-                <div id="resultInfo" class="game-stats-info"></div>
-            </div>
-            <div id="gameGridContainer" class="game-grid"></div>
-            <div id="loadMoreTrigger" class="loading-trigger-area"></div>
-        </div>
-
-        <div class="sidebar-modern">
-            <div class="feed-header"><i class="fas fa-bolt" style="color:var(--gold);"></i> Live Activity</div>
-            <div id="liveActivityFeed" class="live-feed-list"></div>
-            <div class="fav-count-footer">
-                <i class="fas fa-star" style="color:var(--gold);"></i> 
-                <span id="favoriteCount">0</span> Game tersimpan
-                <div style="font-size:0.65rem; margin-top:8px;" id="currentUserDisplay"></div>
-            </div>
-        </div>
+    <div class="nav-links">
+      <a href="https://shortq.org/bolapelangi">Beranda</a>
+      <a href="https://pororokita.vercel.app/">Games</a>
+      <a href="https://shortq.org/bolapelangi">Promo</a>
+      <a href="https://shortq.org/bolapelangi">Leaderboard</a>
+      <a href="https://event.siteq.info/bolapelangi/claim-parlay-lose1/">Event</a>
     </div>
+  </div>
 </div>
 
-<div id="gameModal" class="modal-premium">
-    <div class="modal-card">
-        <i class="fas fa-gamepad" style="font-size:3rem; color:var(--gold);"></i>
-        <div id="modalGameTitle" class="modal-game-name">Slot Name</div>
-        <p id="modalProviderText" style="color:var(--text-secondary);"></p>
-        <button id="modalDemoBtn" class="btn-modal-play">🎮 Main Demo Sekarang</button>
+<main>
+  <div class="container">
+    <!-- Hero Section Cinematic -->
+    <div class="hero">
+      <div class="hero-content fade-up">
+        <div class="badge-premium">✨ PLATFORM PREMIUM #1 INDONESIA</div>
+        <div class="glow-title">GAMING<br>ELITE EXPERIENCE</div>
+        <p class="hero-sub">Sistem tercanggih, withdraw instan, dan ekosistem premium. Bergabunglah dengan 100.000+ gamer elite di Indonesia.</p>
+        <a href="" class="cta-glow" id="mainCta">
+          <i class="fas fa-rocket"></i> Mulai Sekarang & Raih Keuntungan
+        </a><a href=<a href="https://shortq.org/bolapelangi"></a>
+      </div>
+      
+      <!-- Live Counter Dynamic -->
+      <div class="live-stats fade-up delay-1">
+        <div class="stat-badge"><i class="fas fa-user-astronaut"></i> <span class="counter-number" id="onlineUsers">24.8K</span> <span>Online</span></div>
+        <div class="stat-badge"><i class="fas fa-trophy"></i> <span class="counter-number" id="totalWon">Rp 2.84M</span> <span>Menang Hari Ini</span></div>
+        <div class="stat-badge"><i class="fas fa-bolt"></i> <span class="counter-number">0.9s</span> <span>Withdraw</span></div>
+      </div>
     </div>
-</div>
 
-<div id="loginBox" class="login-overlay">
-    <div class="login-card">
-        <div class="login-header">
-            <div class="logo-icon"><i class="fas fa-lock"></i></div>
-            <h2>BolaPelangi</h2>
-            <p>Secure Dashboard Access</p>
-        </div>
-        <div id="loginForm">
-            <div class="login-input">
-                <i class="fas fa-user"></i>
-                <input id="loginUser" placeholder="Username">
-            </div>
-            <div class="login-input">
-                <i class="fas fa-lock"></i>
-                <input id="loginPass" type="password" placeholder="Password">
-            </div>
-            <button class="login-btn" onclick="login()">
-                <i class="fas fa-right-to-bracket"></i> Masuk
-            </button>
-        </div>
-        <div id="registerForm" style="display: none;">
-            <div class="login-input">
-                <i class="fas fa-user"></i>
-                <input id="regUser" placeholder="Username baru">
-            </div>
-            <div class="login-input">
-                <i class="fas fa-lock"></i>
-                <input id="regPass" type="password" placeholder="Password">
-            </div>
-            <div class="login-input">
-                <i class="fas fa-check-circle"></i>
-                <input id="regConfirmPass" type="password" placeholder="Konfirmasi Password">
-            </div>
-            <button class="login-btn" onclick="register()">
-                <i class="fas fa-user-plus"></i> Daftar
-            </button>
-        </div>
-        <div class="register-link" id="toggleRegisterBtn">
-            <span>🔑 Belum punya akun? Daftar di sini</span>
-        </div>
-        <div class="login-error" id="loginError"></div>
-        <div style="margin-top: 16px; font-size: 0.7rem; color: #666;">
-            Demo: admin / 1234
-        </div>
+    <!-- Trust Indicators Premium -->
+    <div class="trust-grid fade-up delay-2">
+      <div class="trust-card"><i class="fas fa-users"></i><h3>100K+</h3><p>Member Aktif</p></div>
+      <div class="trust-card"><i class="fas fa-clock"></i><h3>24/7</h3><p>Support Nonstop</p></div>
+      <div class="trust-card"><i class="fas fa-shield-alt"></i><h3>SSL Bank</h3><p>Keamanan Kelas Dunia</p></div>
+      <div class="trust-card"><i class="fas fa-gem"></i><h3>#1</h3><p>Platform Terpercaya</p></div>
     </div>
-</div>
 
-<div class="protected-badge">🔒 Protected Content</div>
+    <!-- Game Dashboard Cards Premium -->
+    <div class="section-title fade-up delay-2">
+      <i class="fas fa-gamepad"></i>
+      <span>Exclusive Game Collection</span>
+    </div>
+    <div class="card-grid">
+      <div class="game-card fade-up delay-2">
+        <div class="card-icon"><i class="fas fa-dice-d6"></i></div>
+        <h3>Crypto Slots</h3>
+        <p>RTP tertinggi dengan sistem blockchain fair-play & jackpot progresif.</p>
+        <div class="card-stats"><span><i class="fas fa-chart-line"></i> 97.8% RTP</span><span>🔥 1.2K aktif</span></div>
+      </div>
+      <div class="game-card fade-up delay-3">
+        <div class="card-icon"><i class="fas fa-futbol"></i></div>
+        <h3>Sports Arena</h3>
+        <p>Live betting dengan odds eksklusif & analisis real-time.</p>
+        <div class="card-stats"><span><i class="fas fa-tv"></i> 148 Live</span><span>⚡ Bonus 20%</span></div>
+      </div>
+      <div class="game-card fade-up delay-3">
+        <div class="card-icon"><i class="fas fa-chess-queen"></i></div>
+        <h3>Royal Poker</h3>
+        <p>Turnamen harian dengan meja VIP & dealer langsung.</p>
+        <div class="card-stats"><span><i class="fas fa-gem"></i> High Stakes</span><span>🏆 320 aktif</span></div>
+      </div>
+      <div class="game-card fade-up delay-4">
+        <div class="card-icon"><i class="fas fa-chart-simple"></i></div>
+        <h3>Virtual Trading</h3>
+        <p>Prediksi pasar crypto & profit harian dengan modal kecil.</p>
+        <div class="card-stats"><span><i class="fas fa-coins"></i> Bonus 150%</span><span>📈 Trending</span></div>
+      </div>
+    </div>
+
+    <!-- Live Activity Feed -->
+    <div class="activity-feed fade-up">
+      <div class="feed-header">
+        <div class="live-dot"></div>
+        <h3><i class="fas fa-waveform"></i> Live Activity</h3>
+        <span style="font-size: 11px; background: rgba(245,176,66,0.2); padding: 2px 12px; border-radius: 40px; color:#F5B042;">REAL-TIME</span>
+      </div>
+      <div class="feed-list" id="liveFeedList">
+        <div class="feed-item"><i class="fas fa-trophy"></i> <span><span class="highlight">RahmatG</span> menang <span class="highlight">Rp 2.45jt</span> di Slot Phoenix</span><span style="margin-left: auto; font-size: 11px;">baru saja</span></div>
+        <div class="feed-item"><i class="fas fa-chart-line"></i> <span><span class="highlight">JessicaW</span> withdraw <span class="highlight">Rp 7.2jt</span> dari Sportsbook</span><span style="margin-left: auto; font-size: 11px;">2 menit lalu</span></div>
+        <div class="feed-item"><i class="fas fa-fire"></i> <span><span class="highlight">Master88</span> Jackpot! x1250 di Starlight</span><span style="margin-left: auto; font-size: 11px;">5 menit lalu</span></div>
+      </div>
+    </div>
+
+    <!-- Promo Section Premium -->
+    <div class="promo-modern fade-up">
+      <div class="promo-content">
+        <div class="promo-badge"><i class="fas fa-gem"></i> EXCLUSIVE OFFER</div>
+        <h2>Bonus 200% Member Baru<br>+ 50 Free Spin</h2>
+        <p>Deposit pertama langsung berlipat. Tanpa persyaratan turnover rumit. Khusus pendaftar baru periode ini.</p>
+        <a href="#" class="promo-cta">Klaim Bonus Sekarang <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="promo-stats">
+        <i class="fas fa-clock" style="font-size: 2.2rem; color:#F5B042;"></i>
+        <div><strong style="color:#fff;">Berlaku hingga</strong><br> <span style="font-size: 1.4rem; font-weight:800;">30 Juni 2026</span></div>
+        <div><i class="fas fa-check-circle" style="color:#F5B042;"></i> 2.412 member klaim</div>
+      </div>
+    </div>
+
+    <!-- Big CTA -->
+    <div style="text-align: center; margin: 50px 0 30px;">
+      <a href="#" class="cta-glow" id="bottomCta" style="padding: 18px 48px; font-size: 1.25rem;">
+        <i class="fas fa-gem"></i> Daftar Sekarang & Raih Kemenangan
+      </a>
+      <p style="margin-top: 20px; font-size: 0.8rem; color:#8a99b5;">*Withdraw instan • Support 24/7 • Fair Play Guaranteed</p>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-links">
+      <a href="#">Tentang Kami</a>
+      <a href="#">Syarat & Ketentuan</a>
+      <a href="#">Kebijakan Privasi</a>
+      <a href="#">Hubungi Kami</a>
+      <a href="#">Afiliasi</a>
+    </div>
+    <p style="color:#6a7a9e;">© 2026 AETHERIA — Next-Generation Gaming Ecosystem. All rights reserved.</p>
+  </div>
+</footer>
 
 <script>
-    // ========== PROTECTION SCRIPT (Anti-Copy) ==========
-    (function() {
-        // 1. Disable Right Click
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-            showToast("🔒 Konten dilindungi!", "error");
-            return false;
-        });
-        
-        // 2. Disable Keyboard Shortcuts (F12, Ctrl+U, Ctrl+C, Ctrl+V, Ctrl+S, Ctrl+Shift+I, Ctrl+Shift+J)
-        document.addEventListener('keydown', function(e) {
-            // F12
-            if (e.key === 'F12') {
-                e.preventDefault();
-                showToast("🔒 DevTools dinonaktifkan!", "error");
-                return false;
-            }
-            // Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
-            if ((e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) ||
-                (e.ctrlKey && e.key === 'u')) {
-                e.preventDefault();
-                showToast("🔒 View Source dinonaktifkan!", "error");
-                return false;
-            }
-            // Ctrl+C, Ctrl+V, Ctrl+S
-            if (e.ctrlKey && (e.key === 'c' || e.key === 'v' || e.key === 's')) {
-                e.preventDefault();
-                if (e.key === 'c') {
-                    showToast("📋 Menyalin konten tidak diizinkan!", "error");
-                } else if (e.key === 'v') {
-                    showToast("📋 Menempel tidak diizinkan!", "error");
-                } else {
-                    showToast("💾 Menyimpan halaman tidak diizinkan!", "error");
-                }
-                return false;
-            }
-            // Ctrl+A (Select All)
-            if (e.ctrlKey && e.key === 'a') {
-                e.preventDefault();
-                showToast("📋 Seleksi semua tidak diizinkan!", "error");
-                return false;
-            }
-        });
-        
-        // 3. Anti-Copy via Clipboard
-        document.addEventListener('copy', function(e) {
-            e.preventDefault();
-            e.clipboardData.setData('text/plain', 'DILARANG MENYALIN - Konten ini milik BolaPelangi © 2026');
-            showToast("📋 Menyalin konten tidak diizinkan!", "error");
-            return false;
-        });
-        
-        document.addEventListener('cut', function(e) {
-            e.preventDefault();
-            showToast("✂️ Memotong konten tidak diizinkan!", "error");
-            return false;
-        });
-        
-        // 4. DevTools Detection (redirect jika terdeteksi)
-        let devtools = /./;
-        devtools.toString = function() {
-            this.opened = true;
-        };
-        setInterval(function() {
-            if (devtools.opened) {
-                devtools.opened = false;
-                showToast("⚠️ DevTools terdeteksi! Halaman akan di-refresh.", "error");
-                setTimeout(function() {
-                    window.location.href = window.location.href;
-                }, 500);
-            }
-        }, 1000);
-        
-        // 5. Disable Print
-        window.onbeforeprint = function() {
-            showToast("🖨️ Mencetak halaman tidak diizinkan!", "error");
-            return false;
-        };
-        
-        // 6. Watermark on select (tambahan proteksi)
-        document.addEventListener('selectstart', function(e) {
-            e.preventDefault();
-            return false;
-        });
-        
-        // 7. Obfuscated console clear (mencegah user melihat console)
-        console.log = function() {};
-        console.warn = function() {};
-        console.error = function() {};
-        console.info = function() {};
-        
-        // 8. Detect if page is in iframe (clickjacking protection)
-        if (window.self !== window.top) {
-            window.top.location = window.self.location;
-        }
-        
-        // 9. Disable drag and drop images
-        document.addEventListener('dragstart', function(e) {
-            e.preventDefault();
-            return false;
-        });
-    })();
+  // Ripple Effect
+  function createRipple(event, element) {
+    const rect = element.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height);
+    const x = event.clientX - rect.left - size / 2;
+    const y = event.clientY - rect.top - size / 2;
+    const ripple = document.createElement('span');
+    ripple.className = 'ripple';
+    ripple.style.width = ripple.style.height = `${size}px`;
+    ripple.style.left = `${x}px`;
+    ripple.style.top = `${y}px`;
+    ripple.style.position = 'absolute';
+    ripple.style.pointerEvents = 'none';
+    element.style.position = 'relative';
+    element.style.overflow = 'hidden';
+    element.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 600);
+  }
+
+  // Attach ripple to all interactive elements
+  document.querySelectorAll('.cta-glow, .promo-cta, .game-card').forEach(btn => {
+    btn.addEventListener('click', (e) => createRipple(e, btn));
+  });
+
+  // Dynamic Stats & Live Feed
+  const feedContainer = document.getElementById('liveFeedList');
+  const usersList = ['SultanPro', 'CryptoKing', 'LunaWin', 'Jaya89', 'MysticEyes', 'Valkyrie', 'NeonBlade', 'AlphaWolf'];
+  const gamesList = ['Slot Olympus', 'Dragon Treasure', 'Crypto Crash', 'Live Baccarat', 'Arena Wars', 'Mega Wheel'];
+  
+  const formatRupiah = (num) => 'Rp ' + num.toLocaleString('id-ID');
+  
+  function addRandomActivity() {
+    if (!feedContainer) return;
+    const user = usersList[Math.floor(Math.random() * usersList.length)];
+    const win = Math.floor(Math.random() * 8000000) + 500000;
+    const game = gamesList[Math.floor(Math.random() * gamesList.length)];
+    const action = Math.random() > 0.5 ? 'memenangkan' : 'jackpot';
+    const item = document.createElement('div');
+    item.className = 'feed-item';
+    item.style.opacity = '0';
+    item.style.transform = 'translateX(20px)';
+    item.innerHTML = `<i class="fas fa-star-of-life"></i> <span><span class="highlight">${user}</span> ${action} <span class="highlight">${formatRupiah(win)}</span> di ${game}</span><span style="margin-left: auto; font-size: 11px;">baru saja</span>`;
+    feedContainer.prepend(item);
+    setTimeout(() => { item.style.transition = 'all 0.4s ease'; item.style.opacity = '1'; item.style.transform = 'translateX(0)'; }, 10);
+    if (feedContainer.children.length > 6) feedContainer.removeChild(feedContainer.lastChild);
+  }
+
+  let onlineUsers = 24891;
+  let totalWin = 2840000;
+  const onlineEl = document.getElementById('onlineUsers');
+  const winEl = document.getElementById('totalWon');
+
+  function updateStats() {
+    const delta = Math.floor(Math.random() * 61) - 25;
+    onlineUsers = Math.max(18500, onlineUsers + delta);
+    onlineEl.innerText = onlineUsers.toLocaleString();
     
-    // ========== ORIGINAL SCRIPT (Minified/Obfuscated Style) ==========
-    // User Management
-    let currentUser = null;
-    let usersDB = JSON.parse(localStorage.getItem("bp_users") || '{"admin":{"password":"1234","favorites":[]}}');
-    
-    function saveUsersDB() { localStorage.setItem("bp_users", JSON.stringify(usersDB)); }
-    function getCurrentUserFavorites() { if(!currentUser) return []; return usersDB[currentUser]?.favorites || []; }
-    function setCurrentUserFavorites(favorites) { if(currentUser && usersDB[currentUser]) { usersDB[currentUser].favorites = favorites; saveUsersDB(); } }
-    
-    function addFavorite(gameId) { if(!currentUser) return false; let favs = getCurrentUserFavorites(); if(!favs.includes(gameId)) { favs.push(gameId); setCurrentUserFavorites(favs); return true; } return false; }
-    function removeFavorite(gameId) { if(!currentUser) return false; let favs = getCurrentUserFavorites(); const index = favs.indexOf(gameId); if(index !== -1) { favs.splice(index, 1); setCurrentUserFavorites(favs); return true; } return false; }
-    
-    function toggleFav(gameId) {
-        let favs = getCurrentUserFavorites();
-        const index = favs.indexOf(gameId);
-        if(index === -1) { favs.push(gameId); showToast(`⭐ ${fullGameDB.find(g=>g.id===gameId)?.name} ditambahkan ke favorit!`, "success"); } 
-        else { favs.splice(index, 1); showToast(`💔 ${fullGameDB.find(g=>g.id===gameId)?.name} dihapus dari favorit`, "info"); }
-        setCurrentUserFavorites(favs);
-        updateFavDisplay();
-        applyFilterAndRender();
-    }
-    
-    function updateFavDisplay() { document.getElementById("favoriteCount").innerText = getCurrentUserFavorites().length; }
-    function isFavorite(gameId) { return getCurrentUserFavorites().includes(gameId); }
-    
-    // Data Generation
-    const providers = ["Pragmatic Play","PG Soft","Habanero","Spadegaming","JILI","CQ9","Microgaming","Play'n GO","NetEnt","AFB","KING","FCFACHAI","JD","Cao Gaming","Red Tiger"];
-    const statusList = ["GACOR","HOT","LIVE","NEW"];
-    const jackpots = ["Mega Jackpot","Progresif 2M","Jackpot Harian","Dragon Jackpot","Super Jackpot","Aztec Bonus","Empire Prize","Phoenix Fire","Royal Jackpot"];
-    const icons = ["⚡","🍬","🀄","🗿","🐟","🍒","🐉","🤠","🃏","👑","🐱","🔥","🐲","🥇","🤴","🐂","🎅","⭐","🌀","🎰"];
-    const nameParts = ["Neon","Cyber","Mystic","Golden","Dragon","Phoenix","Lucky","Wild","Jewel","Royal","Blaze","Shadow","Cosmic","Stellar"];
-    const nameSuffix = ["Realm","Fortune","Empire","Ways","Fury","Spins","Quest","Strike","Cash","Wilds","Riches","Storm"];
-    const polaList = ["Pola A: Bet Kecil → Besar → Max","Pola B: Turbo Spin 20x","Pola C: Auto Spin 50","Pola D: Manual Spin Slow","Pola E: Bet Max Langsung","Pola F: Naik Bertahap"];
+    const added = Math.floor(Math.random() * 180000) + 40000;
+    totalWin += added;
+    winEl.innerText = 'Rp ' + (totalWin / 1000000).toFixed(2) + 'M';
+    addRandomActivity();
+  }
 
-    function rand(min,max){ return Math.floor(Math.random()*(max-min+1)+min); }
-    
-    function generateGameList(total){
-        let games=[];
-        for(let i=1;i<=total;i++){
-            const provider = providers[rand(0,providers.length-1)];
-            const rtp = parseFloat((rand(952,978)/10).toFixed(1));
-            const status = statusList[rand(0,statusList.length-1)];
-            const jackpot = jackpots[rand(0,jackpots.length-1)];
-            const icon = icons[rand(0,icons.length-1)];
-            const name = `${nameParts[rand(0,nameParts.length-1)]} ${nameSuffix[rand(0,nameSuffix.length-1)]} ${rand(1,999)}`;
-            const trending = Math.random() > 0.82;
-            games.push({ id:i, name:name.trim(), provider, rtp, originalRtp: rtp, jackpot, status, icon, trending, timestamp:Date.now()-rand(0,2e9), pola: polaList[rand(0,polaList.length-1)] });
-        }
-        return games;
-    }
-
-    let fullGameDB = generateGameList(335);
-    let filteredGames = [...fullGameDB];
-    let currentSearchTerm = "", currentProviderVal = "all", currentSortType = "default";
-    let visibleLimit = 20, isLoadingFlag = false;
-    let rtpRefreshInterval = null;
-    
-    function updateRTPValues() {
-        let totalRtp = 0;
-        fullGameDB.forEach(game => {
-            const fluctuation = (Math.random() - 0.5) * 1;
-            let newRtp = game.originalRtp + fluctuation;
-            newRtp = Math.min(98.5, Math.max(94, newRtp));
-            game.rtp = parseFloat(newRtp.toFixed(1));
-            totalRtp += game.rtp;
-        });
-        const avgRtp = (totalRtp / fullGameDB.length).toFixed(1);
-        document.getElementById("avgRtpDisplay").innerText = avgRtp;
-        const rtpDisplay = document.getElementById("avgRtpDisplay");
-        rtpDisplay.classList.add("rtp-update-badge");
-        setTimeout(() => rtpDisplay.classList.remove("rtp-update-badge"), 500);
-        applyFilterAndRender();
-        showToast("📊 Data RTP telah diperbarui!", "info");
-    }
-    
-    function startRTPRefresh() { if(rtpRefreshInterval) clearInterval(rtpRefreshInterval); rtpRefreshInterval = setInterval(updateRTPValues, 30000); }
-    function stopRTPRefresh() { if(rtpRefreshInterval) { clearInterval(rtpRefreshInterval); rtpRefreshInterval = null; } }
-
-    // Live feed
-    let liveEvents = [];
-    const usersList = ["CryptoGacor","JackpotWhale","NeonWinner","StellarSpin","LuckyVertex","BetaKing","PelangiPro"];
-    
-    function initLiveFeed(){
-        for(let i=0;i<5;i++){ const game = fullGameDB[rand(0,fullGameDB.length-1)]; liveEvents.push({ user: usersList[i%usersList.length], game: game.name, win: `$${rand(2,95)}.${rand(0,9)}K`, time: `${rand(1,12)}m ago` }); }
-        renderLiveFeed();
-        setInterval(()=>{ const randGame = fullGameDB[rand(0,fullGameDB.length-1)]; liveEvents.unshift({ user: usersList[rand(0,usersList.length-1)], game: randGame.name, win: `$${rand(5,128)}.${rand(0,9)}K`, time: "Just now" }); if(liveEvents.length>9) liveEvents.pop(); renderLiveFeed(); }, 12000);
-    }
-
-    function renderLiveFeed(){ const container = document.getElementById("liveActivityFeed"); if(!container) return; container.innerHTML = liveEvents.map(ev => `<div class="feed-entry"><i class="fas fa-crown" style="color:var(--gold);font-size:0.7rem;"></i> <strong>${ev.user}</strong> won <span style="color:#00E599;">${ev.win}</span> on ${ev.game}<div style="font-size:0.6rem; margin-top:4px;">⚡ ${ev.time}</div></div>`).join(''); }
-
-    // Toast notification
-    function showToast(message, type = "info"){
-        const toast = document.createElement("div");
-        toast.className = `toast-notification ${type}`;
-        const icon = type === "success" ? "fa-check-circle" : (type === "error" ? "fa-exclamation-circle" : "fa-info-circle");
-        toast.innerHTML = `<i class="fas ${icon}"></i> ${message}`;
-        document.body.appendChild(toast);
-        setTimeout(() => { toast.style.opacity = "0"; toast.style.transform = "translateX(100%)"; setTimeout(() => toast.remove(), 300); }, 3000);
-    }
-
-    function applyFilterAndRender(){
-        let temp = [...fullGameDB];
-        if(currentSearchTerm.trim() !== ""){ const kw = currentSearchTerm.toLowerCase(); temp = temp.filter(g => g.name.toLowerCase().includes(kw) || g.provider.toLowerCase().includes(kw)); }
-        if(currentProviderVal !== "all") temp = temp.filter(g => g.provider === currentProviderVal);
-        if(currentSortType === "rtp") temp.sort((a,b)=>b.rtp - a.rtp);
-        else if(currentSortType === "trending") temp.sort((a,b)=>(b.trending?1:0)-(a.trending?1:0));
-        else if(currentSortType === "newest") temp.sort((a,b)=>b.timestamp - a.timestamp);
-        else temp.sort((a,b)=>a.id - b.id);
-        filteredGames = temp;
-        visibleLimit = 20;
-        document.getElementById("gameGridContainer").innerHTML = "";
-        renderGameChunk();
-        updateResultInfo();
-    }
-
-    function renderGameChunk(){
-        const container = document.getElementById("gameGridContainer");
-        const toRender = filteredGames.slice(0, visibleLimit);
-        const fragment = document.createDocumentFragment();
-        for(let i=container.children.length; i<toRender.length; i++){
-            const g = toRender[i];
-            const isFav = isFavorite(g.id);
-            const card = document.createElement("div");
-            card.className = "game-card";
-            card.innerHTML = `<div class="card-header-row"><div class="game-icon-large">${g.icon}</div>${g.trending ? '<div class="trend-badge-modern"><i class="fas fa-chart-simple"></i> TRENDING</div>' : ''}</div><div class="game-title-card">${escapeHtml(g.name)}</div><div class="provider-sub">${escapeHtml(g.provider)}</div><div class="rtp-progress-area"><div class="rtp-flex"><span>RTP Live</span><span id="rtpValue_${g.id}">${g.rtp}%</span></div><div class="progress-bar-bg"><div class="progress-fill" style="width: ${g.rtp}%;"></div></div></div><div class="jackpot-light"><i class="fas fa-gem"></i> ${escapeHtml(g.jackpot)}</div><div class="pola-box"><i class="fas fa-brain"></i> <span class="pola-label">Pola Ketua:</span> ${escapeHtml(g.pola)}</div><div class="status-badge badge-${g.status === 'GACOR' ? 'gacor' : g.status === 'HOT' ? 'hot' : g.status === 'LIVE' ? 'live' : 'new'}"><i class="fas fa-circle" style="font-size:0.4rem;"></i> ${g.status}</div><div class="card-footer-actions"><button class="demo-button" data-id="${g.id}" data-name="${escapeHtml(g.name).replace(/'/g, "\\'")}" data-prov="${escapeHtml(g.provider)}"><i class="fas fa-play"></i> Demo</button><button class="favorite-icon ${isFav ? 'active' : ''}" data-id="${g.id}"><i class="fas fa-star"></i></button></div>`;
-            fragment.appendChild(card);
-        }
-        container.appendChild(fragment);
-        attachDynamicEvents();
-    }
-
-    function escapeHtml(str) { return str.replace(/[&<>]/g, function(m) { if (m === '&') return '&amp;'; if (m === '<') return '&lt;'; if (m === '>') return '&gt;'; return m; }); }
-
-    function attachDynamicEvents(){
-        document.querySelectorAll(".demo-button").forEach(btn=>{ btn.removeEventListener("click", demoHandler); btn.addEventListener("click", demoHandler); });
-        document.querySelectorAll(".favorite-icon").forEach(btn=>{ btn.removeEventListener("click", favHandler); btn.addEventListener("click", favHandler); });
-    }
-
-    function demoHandler(e){
-        e.stopPropagation();
-        const id = parseInt(this.dataset.id);
-        const game = fullGameDB.find(g=>g.id===id);
-        if(game){
-            document.getElementById("modalGameTitle").innerText = game.name;
-            document.getElementById("modalProviderText").innerHTML = `<i class="fas fa-tag"></i> ${game.provider} · ${game.jackpot}`;
-            const modal = document.getElementById("gameModal");
-            modal.classList.add("active");
-            const modalBtn = document.getElementById("modalDemoBtn");
-            const newBtn = modalBtn.cloneNode(true);
-            modalBtn.parentNode.replaceChild(newBtn, modalBtn);
-            newBtn.addEventListener("click",()=>{ modal.classList.remove("active"); showToast(`🎰 Memulai DEMO: ${game.name} — selamat bermain!`, "success"); });
-            modal.addEventListener("click",(e2)=>{ if(e2.target===modal) modal.classList.remove("active"); });
-        }
-    }
-
-    function favHandler(e){ e.stopPropagation(); const id = parseInt(this.dataset.id); toggleFav(id); applyFilterAndRender(); }
-
-    function updateResultInfo(){
-        const infoElem = document.getElementById("resultInfo");
-        if(infoElem){ infoElem.innerHTML = `✨ Menampilkan ${Math.min(visibleLimit, filteredGames.length)} dari ${filteredGames.length} game premium`; }
-        const triggerDiv = document.getElementById("loadMoreTrigger");
-        if(triggerDiv){ if(visibleLimit >= filteredGames.length) triggerDiv.innerHTML = '<i class="fas fa-check-circle"></i> Semua game termuat'; else triggerDiv.innerHTML = '<i class="fas fa-arrow-down"></i> Scroll untuk memuat lebih banyak'; }
-    }
-
-    function handleInfiniteScroll(){
-        const trigger = document.getElementById("loadMoreTrigger");
-        if(!trigger) return;
-        const rect = trigger.getBoundingClientRect();
-        if(rect.top < window.innerHeight+100 && !isLoadingFlag && visibleLimit < filteredGames.length){
-            isLoadingFlag = true;
-            trigger.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Memuat game...';
-            setTimeout(()=>{ visibleLimit = Math.min(visibleLimit+20, filteredGames.length); renderGameChunk(); isLoadingFlag = false; updateResultInfo(); }, 280);
-        }
-    }
-
-    function renderProviderChips(){
-        const allProviders = [...new Set(fullGameDB.map(g=>g.provider))];
-        const container = document.getElementById("providerChipsContainer");
-        if(!container) return;
-        container.innerHTML = `<div class="chip-modern ${currentProviderVal==='all' ? 'active' : ''}" data-provider="all">✨ All</div>`;
-        allProviders.forEach(prov=>{
-            const chip = document.createElement("div");
-            chip.className = `chip-modern ${currentProviderVal===prov ? 'active' : ''}`;
-            chip.innerText = prov;
-            chip.dataset.provider = prov;
-            chip.addEventListener("click",()=>{ currentProviderVal = prov; applyFilterAndRender(); renderProviderChips(); });
-            container.appendChild(chip);
-        });
-        const allChip = container.firstChild;
-        if(allChip){ allChip.addEventListener("click",()=>{ currentProviderVal = "all"; applyFilterAndRender(); renderProviderChips(); }); }
-    }
-
-    function toggleSort(){ const el = document.getElementById("sortDropdown"); if(el) el.style.display = el.style.display === "block" ? "none" : "block"; }
-    
-    function setSort(type){
-        const label = document.getElementById("sortLabel");
-        if(type === "rtp") label.innerText = "Sort: RTP Tertinggi";
-        else if(type === "trending") label.innerText = "Sort: Populer";
-        else if(type === "newest") label.innerText = "Sort: Terbaru";
-        else label.innerText = "Sort: Default";
-        const dropdown = document.getElementById("sortDropdown");
-        if(dropdown) dropdown.style.display = "none";
-        currentSortType = type;
-        applyFilterAndRender();
-    }
-
-    // Dark/Light Mode
-    let isDarkMode = true;
-    function toggleTheme() {
-        isDarkMode = !isDarkMode;
-        if(isDarkMode) { document.body.classList.remove("light-mode"); document.getElementById("themeToggle").innerHTML = '<i class="fas fa-sun"></i> Light'; } 
-        else { document.body.classList.add("light-mode"); document.getElementById("themeToggle").innerHTML = '<i class="fas fa-moon"></i> Dark'; }
-        localStorage.setItem("bp_theme", isDarkMode ? "dark" : "light");
-        showToast(`${isDarkMode ? "🌙 Dark Mode" : "☀️ Light Mode"} aktif`, "info");
-    }
-    
-    function loadThemePreference() {
-        const savedTheme = localStorage.getItem("bp_theme");
-        if(savedTheme === "light") { isDarkMode = false; document.body.classList.add("light-mode"); document.getElementById("themeToggle").innerHTML = '<i class="fas fa-moon"></i> Dark'; } 
-        else { isDarkMode = true; document.body.classList.remove("light-mode"); document.getElementById("themeToggle").innerHTML = '<i class="fas fa-sun"></i> Light'; }
-    }
-
-    // Login/Register
-    let isRegisterMode = false;
-    function toggleRegisterMode() {
-        isRegisterMode = !isRegisterMode;
-        const loginForm = document.getElementById("loginForm");
-        const registerForm = document.getElementById("registerForm");
-        const toggleBtn = document.getElementById("toggleRegisterBtn");
-        if(isRegisterMode) { loginForm.style.display = "none"; registerForm.style.display = "block"; toggleBtn.innerHTML = '<span>✅ Sudah punya akun? Login di sini</span>'; } 
-        else { loginForm.style.display = "block"; registerForm.style.display = "none"; toggleBtn.innerHTML = '<span>🔑 Belum punya akun? Daftar di sini</span>'; }
-    }
-    
-    function register() {
-        const username = document.getElementById("regUser").value.trim();
-        const password = document.getElementById("regPass").value.trim();
-        const confirmPass = document.getElementById("regConfirmPass").value.trim();
-        if(!username || !password) { showLoginError("Isi semua field!"); return; }
-        if(password !== confirmPass) { showLoginError("Password tidak cocok!"); return; }
-        if(username.length < 3) { showLoginError("Username minimal 3 karakter!"); return; }
-        if(usersDB[username]) { showLoginError("Username sudah terdaftar!"); return; }
-        usersDB[username] = { password: password, favorites: [] };
-        saveUsersDB();
-        showToast(`✅ Registrasi berhasil! Silakan login.`, "success");
-        toggleRegisterMode();
-        document.getElementById("regUser").value = "";
-        document.getElementById("regPass").value = "";
-        document.getElementById("regConfirmPass").value = "";
-    }
-    
-    function hideLoginBox(){
-        const box = document.getElementById("loginBox");
-        if(box){ box.style.opacity = "0"; setTimeout(() => box.style.display = "none", 300); }
-        const logoutBtn = document.getElementById("logoutBtn");
-        if(logoutBtn) logoutBtn.style.display = "flex";
-        document.getElementById("currentUserDisplay").innerHTML = `<i class="fas fa-user"></i> ${currentUser}`;
-    }
-
-    function showLoginError(msg){ const errDiv = document.getElementById("loginError"); if(errDiv){ errDiv.innerText = "⚠ " + msg; setTimeout(() => errDiv.innerText = "", 3000); } }
-
-    function login(){
-        const username = document.getElementById("loginUser").value.trim();
-        const password = document.getElementById("loginPass").value.trim();
-        if(!username || !password){ showLoginError("Isi username & password dulu!"); return; }
-        const btn = document.querySelector("#loginForm .login-btn");
-        btn.disabled = true;
-        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memuat...';
-        setTimeout(() => {
-            if(usersDB[username] && usersDB[username].password === password){
-                currentUser = username;
-                localStorage.setItem("bp_current_user", username);
-                hideLoginBox();
-                showToast(`Selamat datang, ${username}!`, "success");
-                updateActiveUserCount();
-                updateFavDisplay();
-                applyFilterAndRender();
-                startRTPRefresh();
-            } else { showLoginError("Login gagal. Periksa username/password!"); }
-            btn.disabled = false;
-            btn.innerHTML = '<i class="fas fa-right-to-bracket"></i> Masuk';
-        }, 800);
-    }
-
-    function logout(){
-        stopRTPRefresh();
-        currentUser = null;
-        localStorage.removeItem("bp_current_user");
-        const loginBox = document.getElementById("loginBox");
-        if(loginBox){ loginBox.style.display = "flex"; loginBox.style.opacity = "1"; }
-        const logoutBtn = document.getElementById("logoutBtn");
-        if(logoutBtn) logoutBtn.style.display = "none";
-        document.getElementById("currentUserDisplay").innerHTML = "";
-        showToast("Anda telah logout", "info");
-        applyFilterAndRender();
-    }
-
-    function updateActiveUserCount(){
-        const userSpan = document.getElementById("activeUsers");
-        if(userSpan){ const currentCount = parseInt(userSpan.innerText) || 3800; userSpan.innerText = (currentCount + rand(10, 50)).toLocaleString(); }
-    }
-
-    // Initialize
-    window.addEventListener("load", () => {
-        renderProviderChips();
-        applyFilterAndRender();
-        initLiveFeed();
-        updateFavDisplay();
-        loadThemePreference();
-        
-        const savedUser = localStorage.getItem("bp_current_user");
-        if(savedUser && usersDB[savedUser]) { currentUser = savedUser; hideLoginBox(); startRTPRefresh(); updateFavDisplay(); document.getElementById("currentUserDisplay").innerHTML = `<i class="fas fa-user"></i> ${currentUser}`; }
-        
-        const searchInput = document.getElementById("globalSearch");
-        if(searchInput){ searchInput.addEventListener("input",(e)=>{ currentSearchTerm = e.target.value; applyFilterAndRender(); }); }
-        
-        const resetBtn = document.getElementById("resetAllFilters");
-        if(resetBtn){ resetBtn.addEventListener("click",()=>{ currentSearchTerm = ""; currentProviderVal = "all"; currentSortType = "default"; const searchInputElem = document.getElementById("globalSearch"); if(searchInputElem) searchInputElem.value = ""; const sortLabel = document.getElementById("sortLabel"); if(sortLabel) sortLabel.innerText = "Sort: Default"; applyFilterAndRender(); renderProviderChips(); }); }
-        
-        const logoutBtn = document.getElementById("logoutBtn");
-        if(logoutBtn){ logoutBtn.addEventListener("click", logout); }
-        
-        const themeToggle = document.getElementById("themeToggle");
-        if(themeToggle){ themeToggle.addEventListener("click", toggleTheme); }
-        
-        const toggleRegisterBtn = document.getElementById("toggleRegisterBtn");
-        if(toggleRegisterBtn){ toggleRegisterBtn.addEventListener("click", toggleRegisterMode); }
-        
-        window.addEventListener("scroll", handleInfiniteScroll);
-        
-        document.addEventListener("click",(e)=>{ if(!e.target.closest(".sort-wrapper")){ const dd = document.getElementById("sortDropdown"); if(dd) dd.style.display = "none"; } });
-        
-        const loginPass = document.getElementById("loginPass");
-        if(loginPass){ loginPass.addEventListener("keydown", (e) => { if(e.key === "Enter") login(); }); }
-        
-        setInterval(updateActiveUserCount, 30000);
+  setInterval(updateStats, 10000);
+  setInterval(() => addRandomActivity(), 13000);
+  
+  // Mutation observer for dynamic elements ripple
+  const observer = new MutationObserver(() => {
+    document.querySelectorAll('.game-card, .cta-glow, .promo-cta').forEach(el => {
+      if (!el.hasRipple) {
+        el.addEventListener('click', (e) => createRipple(e, el));
+        el.hasRipple = true;
+      }
     });
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
+  document.querySelectorAll('.game-card, .cta-glow, .promo-cta').forEach(el => el.hasRipple = true);
 </script>
 </body>
 </html>
